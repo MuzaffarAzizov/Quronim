@@ -1,0 +1,17 @@
+suralar https://api.alquran.cloud/v1/surah
+mualif bo'yicha detail suralar https://api.alquran.cloud/v1/surah/${number}/${author}
+number surani nomeri, author qori misol uchun ar.alafasy
+detail surah tillar boyicha https://api.alquran.cloud/v1/surah/${number}/${lang}
+number surani nomeri, lang til bo'yicha misol uchun uz
+namoz vaqtlari https://islomapi.uz/api/present/day?region=Toshkent
+
+Https://quron-namoz.netlify.app
+https://alquranproject.netlify.app/
+
+detail surah tillar boyicha https://api.alquran.cloud/v1/surah/${number}/${lang}
+
+https://api.alquran.cloud/v1/surah/1/uz.sodik uz ayahs
+https://api.alquran.cloud/v1/surah/1/ru.kuliev ru ayahs
+
+toliq documentation https://alquran.cloud/
+
