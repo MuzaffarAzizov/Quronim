@@ -1,13 +1,15 @@
 .card {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  width: 100%;
-  margin: 0 auto;
-}
-.detail {
-  border: 1px solid red;
-  border-radius: 20px;
-  margin: 20px;
-  padding: 10px;
-  text-align: center;
+  gap: 10px 1%;
+  margin: 0 2%;
+  .quron {
+    background-color: rgb(122, 226, 43);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+  .quron:hover {
+    background-color: brown;
+  }
 }

@@ -9,7 +9,7 @@ export const Quron = () => {
   console.log(number, "number");
   useEffect(() => {
     instance
-      .get(`v1/surah`)
+      .get(`/surah`)
       .then((response) => {
         setSurahs(response.data.data);
       })

@@ -1,0 +1,13 @@
+.navbar {
+  align-items: center;
+  background-color: #118a26;
+  height: 8vh;
+  padding: 1% 8%;
+  .home {
+    color: white;
+    font-size: 1.5rem;
+  }
+  .home:hover {
+    color: red;
+  }
+}
