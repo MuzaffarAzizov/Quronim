@@ -29,7 +29,7 @@ export const Namoz = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [region.name]);
   const handleRegionChange = (event) => {
     setRegion(event.target.value);
   };

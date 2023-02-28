@@ -20,7 +20,7 @@ export const Detail = () => {
     instance
       .get(`/surah/${number}/ar.alafasy`)
       .then((response) => setQuranData(response.data));
-  }, []);
+  }, [number]);
 
   useEffect(() => {
     if (audioRef.current) {
