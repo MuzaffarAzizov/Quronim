@@ -1,0 +1,35 @@
+.card {
+  h1 {
+    margin: 1% 0;
+  }
+  h2 {
+    margin: 2% 0;
+  }
+  select {
+    background-color: rgb(60, 255, 0);
+    padding: 10px;
+    font-size: 1rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+  }
+  .namoz {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    p {
+      padding: 1.25rem;
+      background-color: aqua;
+      margin: 5%;
+      border-radius: 20px;
+      font-size: 2rem;
+    }
+    p:hover {
+      background-color: chocolate;
+      color: white;
+    }
+    .active {
+      background-color: red;
+    }
+  }
+}

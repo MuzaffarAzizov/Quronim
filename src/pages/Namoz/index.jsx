@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { instance1 } from "../../utils/AxiosInstance";
-import { cityContext } from "../../utils/cityContext";
+import n from "./style.module.scss";
 
 export const Namoz = () => {
-  const { region, setRegion } = useContext(cityContext);
+  let [region, setRegion] = useState("Toshkent");
   const [data, setData] = useState(null);
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString()
@@ -18,40 +18,71 @@ export const Namoz = () => {
 
   useEffect(() => {
     instance1
-      .get(
-        `api/present/day?region=${
-          region.name === undefined ? "Toshkent" : region.name
-        } `
-      )
+      .get(`api/present/day?region=${region} `)
       .then((response) => {
         setData(response.data.times);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [region.name]);
+  }, [region]);
   const handleRegionChange = (event) => {
     setRegion(event.target.value);
   };
+  const timeDiff = (prayerTime) => {
+    const now = new Date();
+    const prayer = new Date(now.toDateString() + " " + prayerTime);
+    const diff = prayer - now;
+    return diff / 60000;
+  };
 
   return (
-    <div>
-      <h1>The current time is {currentTime}.</h1>
-      <h1>Today's Prayer Times in Tashkent</h1>
-      <select value={region.name} onChange={handleRegionChange}>
-        <option value="Tashkent">Tashkent</option>
-        <option value="Samarkand">Samarkand</option>
-        <option value="Bukhara">Bukhara</option>
-        <option value="Andijan">Andijan</option>
+    <div className={n.card}>
+      <h1>{currentTime}</h1>
+      <h2>Today's Prayer Times in {region}</h2>
+      <select value={region} onChange={handleRegionChange}>
+        <option value="Toshkent">Toshkent</option>
+        <option value="Samarqand">Samarqand</option>
+        <option value="Buxoro">Buxoro</option>
+        <option value="Andijon">Andijon</option>
+        <option value="Namangan">Namangan</option>
+        <option value="Farg'ona">Farg'ona</option>
+        <option value="Guliston">Guliston</option>
+        <option value="Jizzax">Jizzax</option>
+        <option value="Qarshi">Qarshi</option>
+        <option value="Navoiy">Navoiy</option>
+        <option value="Buxoro">Buxoro</option>
+        <option value="Xiva">Xiva</option>
+        <option value="Nukus">Nukus</option>
       </select>
       {data ? (
-        <div>
-          <p>Bomdod: {data?.tong_saharlik}</p>
-          <p>Quyosh: {data?.quyosh}</p>
-          <p>Peshin: {data?.peshin}</p>
-          <p>Asr: {data?.asr}</p>
-          <p>Shom: {data?.shom_iftor}</p>
-          <p>Xufton: {data?.hufton}</p>
+        <div className={n.namoz}>
+          <p
+            className={
+              timeDiff(data.tong_saharlik) <= 0 && !data.quyosh ? n.active : ""
+            }
+          >
+            Bomdod: {data?.tong_saharlik}
+          </p>
+          <p
+            className={
+              timeDiff(data.quyosh) <= 0 && !data.peshin ? n.active : ""
+            }
+          >
+            Quyosh: {data?.quyosh}
+          </p>
+          <p className={timeDiff(data.peshin) <= 0 ? n.active : ""}>
+            Peshin: {data?.peshin}
+          </p>
+          <p className={timeDiff(data.asr) <= 0 ? n.active : ""}>
+            Asr: {data?.asr}
+          </p>
+          <p className={timeDiff(data.shom_iftor) <= 0 ? n.active : ""}>
+            Shom: {data?.shom_iftor}
+          </p>
+          <p className={timeDiff(data.hufton) <= 0 ? n.active : ""}>
+            Xufton: {data?.hufton}
+          </p>
         </div>
       ) : (
         <p>Loading...</p>

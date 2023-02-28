@@ -5,12 +5,12 @@ import { Quron } from "./pages/Quron";
 import { Namoz } from "./pages/Namoz";
 import { Detail } from "./pages/Detail";
 import { Layout } from "./components/Layout";
-import CityProvider from "./utils/cityContext";
+import { AudioPlayerProvider } from "./utils/AudioContext";
 
 function App() {
   return (
     <div className="App">
-      <CityProvider>
+      <AudioPlayerProvider>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
             <Route path="/quron/:number" element={<Detail />} />
           </Routes>
         </Layout>
-      </CityProvider>
+      </AudioPlayerProvider>
     </div>
   );
 }
